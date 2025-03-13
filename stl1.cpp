@@ -59,7 +59,7 @@ public:
 };
 
 int main() {
-    child2<int, double, char, std::string, bool, float> pro(1, 2.5, 'a', "hello", true,  3.14);
+    child2<int, double, char, string, bool, float> pro(1, 2.5, 'a', "hello", true,  3.14);
     pro.display();
     return 0;
 }
