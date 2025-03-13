@@ -23,7 +23,7 @@ public:
     base(T1 v1, T2 v2) : value1(v1), value2(v2) {}
     virtual ~base() {}
 
-    void display() const {
+    void virtual display() const {
         cout << "Base values: " << value1 << ", " << value2 << endl;
     }
 };
@@ -37,7 +37,7 @@ public:
     child(T1 v1, T2 v2, T3 v3, T4 v4) : base<T1, T2>(v1, v2), value3(v3), value4(v4) {}
     ~child() override {}
 
-    void display() const {
+    void display() const override{
         base<T1, T2>::display();
         cout << "Child values: " << value3 << ", " << value4 << endl;
     }
@@ -52,14 +52,14 @@ public:
     child2(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6) : child<T1, T2, T3, T4>(v1, v2, v3, v4), value5(v5), value6(v6) {}
     ~child2() override {}
 
-    void display() const {
+    void display() const override{
         child<T1, T2, T3, T4>::display();
         cout << "Child2 values: " << value5 << ", " << value6 << endl;
     }
 };
 
 int main() {
-    child2<int, double, char, string, bool, float> pro(1, 2.5, 'a', "hello", true,  3.14);
+    child2<int, double, char, string, bool, float> pro(1, 2.5, 'a', "hello", true,  3.14f);
     pro.display();
     return 0;
 }
